@@ -1,0 +1,37 @@
+version: '2.2'
+services:
+  postgres:
+    image: postgres:16.2
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: myfoodrecipesdb
+
+  graphql-engine:
+    image: hasura/graphql-engine:v2.38.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/myfoodrecipesdb
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # Set to "false" in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+
+  gin-app:
+    build: ./backend/gin-app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - "postgres"
+    environment:
+      DB_CONNECTION_STRING: postgres://postgres:postgrespassword@postgres:5432/myfoodrecipesdb
+      JWT_SECRET: yourjwtsecret
+    restart: always
+
+volumes:
+  db_data:
