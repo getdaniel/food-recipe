@@ -1,37 +1,47 @@
 version: '3.8'
+
 services:
   postgres:
     image: postgres:latest
     restart: always
-    volumes:
-      - db_data:/var/lib/postgresql/data
     environment:
+      POSTGRES_USER: danny
       POSTGRES_PASSWORD: 7980@dan
       POSTGRES_DB: foodrecipe
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
-  graphql-engine:
-    image: hasura/graphql-engine:v2.38.0
+  hasura:
+    image: hasura/graphql-engine:latest
     ports:
       - "8080:8080"
     depends_on:
-      - "postgres"
+      - postgres
     restart: always
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/foodrecipe
-      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # Set to "false" in production
+      HASURA_GRAPHQL_DATABASE_URL: postgres://danny:7980@dan@postgres:5432/foodrecipe
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: 7980@hasura
 
-  gin-app:
-    build: ./backend/
+  golang:
+    build:
+      context: /backend/
+      dockerfile: Dockerfile
+    depends_on:
+      - hasura
     ports:
       - "4000:4000"
-    depends_on:
-      - "postgres"
-    environment:
-      DB_CONNECTION_STRING: postgres://postgres:postgrespassword@postgres:5432/foodrecipe
-      JWT_SECRET: 7980@jwt
     restart: always
+    volumes:
+      - .:/app
+    environment:
+      HASURA_URL: http://hasura:8080/v1/graphql
+      environment:
+      DB_CONNECTION_STRING: postgres://danny:7980@dan@postgres:5432/foodrecipe
+      JWT_SECRET: 7980@jwt
+    command: ["go", "run", "main.go"]
+
 
 volumes:
   db_data:
