@@ -1,0 +1,5 @@
+# Ignore Docker Compose YAML file
+docker-compose.yaml
+
+# Ignore SQL database dump file
+food-recipes.sql
