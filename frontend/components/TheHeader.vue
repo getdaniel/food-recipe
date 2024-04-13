@@ -1,14 +1,18 @@
 <template>
-  <div class="bg-sky-950 text-gray-100 py-3.5 px-6 shadow md:flex justify-between items-center">
+  <div class="bg-sky-950 text-gray-100 py-1.5 px-6 shadow md:flex justify-between items-center">
 
     <!-- Logo and Title -->
     <div class="flex items-center">
       <span class="text-green-500 text-xl mr-1">
         <div class="rounded-full overflow-hidden mr-4">
-          <img src="../statics/logo.png" alt="Logo" class="h-10 w-12">
+          <img src="../statics/logo.png" alt="Logo" class="h-10 w-14">
         </div>
       </span>
-      <h1 class="text-xl"> Recipes </h1>
+      <h1 class="text-center font-bold text-gray-300">
+        <span class="text-green-500 mb-0 text-xs font-serif">Food</span> <br>
+        <span class="italic mt-0">Recipes</span>
+      </h1>
+
     </div>
 
     <!-- Navigation Toggle Button -->
