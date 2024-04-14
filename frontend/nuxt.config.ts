@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   apollo: {
     clients: {
       default: {
-        httpEndpoint: 'https://spacex-production.up.railway.app'
+        httpEndpoint: 'http://localhost:4000',
       }
     },
   },
