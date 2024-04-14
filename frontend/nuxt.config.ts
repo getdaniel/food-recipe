@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxtjs/apollo',
     '@vee-validate/nuxt',
     '@nuxtjs/tailwindcss',
+    'nuxt-icon',
   ],
 
   apollo: {
