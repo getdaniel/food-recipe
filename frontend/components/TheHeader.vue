@@ -36,7 +36,10 @@
         <li class="md:mx-4 md:my-0 my-6" v-for="link in Links">
           <a href={{ link.link }} class="text-xl hover:text-green-500">{{ link.name }}</a>
         </li>
-        <BaseButton> Get Started </BaseButton>
+        <nuxt-link to="/sign-in-up">
+          <button class="hover: bg-green-500 duration: delay-300 font-sans rounded py-1.5 px-4 text-white"> Get Started
+          </button>
+        </nuxt-link>
       </ul>
     </nav>
 
@@ -45,13 +48,7 @@
 
 <script>
 
-import BaseButton from './BaseButton';
-
 export default {
-
-  components: {
-    BaseButton
-  },
 
   setup() {
     let open = ref(false);

@@ -4,14 +4,15 @@
             <h2 class="text-xl font-semibold text-gray-100 mb-2 pt-12">{{ category.name }}</h2>
 
             <div class="flex flex-wrap -m-2">
-                <div v-for="recipe in category.recipes" :key="recipe" class="p-2 mx-auto">
-                    <div class="recipe-card w-72 h-90 bg-gray-200 shadow-md rounded-lg mx-auto relative">
+                <div v-for="recipe in category.recipes" :key="recipe" class="p-2 mx-auto aspect-square">
+                    <div class="recipe-card w-72 h-auto bg-gray-200 shadow-md rounded-lg relative">
                         <img src="../statics/logo.png" alt="Recipe Photo"
                             class="w-full h-48 object-cover rounded-t-lg" />
 
                         <div class="px-4 py-2 flex flex-col justify-between">
                             <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">{{ recipe.name }}</h2>
-                            <p class="text-base text-gray-600 mb-2 overflow-hidden h-18 truncate ..."> {{ recipe.description }}
+                            <p class="text-base text-gray-600 mb-2 overflow-hidden h-18"> {{
+                                recipe.description }}
                             </p>
                             <div class="border-b border-gray-300"></div>
                         </div>
