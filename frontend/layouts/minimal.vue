@@ -1,1 +1,0 @@
-<!-- A minimal layout without navigation, for pages like login -->

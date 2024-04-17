@@ -1,5 +1,27 @@
-# Ignore Docker Compose YAML file
-docker-compose.yaml
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
 
-# Ignore SQL database dump file
-food-recipes.sql
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# docker file
+docker-compose.yaml
