@@ -5,7 +5,6 @@
   </head>
   <div class="bg-sky-950 text-gray-100 py-1.5 px-6 shadow md:flex justify-between items-center">
 
-    <!-- Logo and Title -->
     <NuxtLink to="/">
       <div class="flex items-center">
         <span class="text-green-500 text-xl mr-1">
@@ -20,21 +19,45 @@
       </div>
     </NuxtLink>
 
-    <!-- Navigation Toggle Button -->
     <button class="absolute md:hidden right-6 top-4 cursor-pointer" @click="open = !open">
       <Icon v-if="open" name="x" class="w-6 h-6" />
       <Icon v-else name="menu-deep" class="w-6 h-6" />
     </button>
 
-    <!-- Navigation Menu -->
     <nav>
       <ul
         class="md:flex md:items-center md:px-0 px-3 md:pb-0 pb-10 md:static absolute bg-sky-950 md:w-auto w-full top-14 duration-700 ease-in"
         :class="[open ? 'left-0' : 'left-[-100%]']">
-        <!-- Main Navigation Links -->
         <li class="md:mx-4 md:my-0 my-6" v-for="link in Links">
           <NuxtLink :to="link.link" class="text-xl hover:text-green-500">{{ link.name }}</NuxtLink>
         </li>
+
+        <li class="md:mx-4 md:my-0 my-6 relative" v-if="!open">
+          <NuxtLink to="/recipes" class="text-xl hover:text-green-500" @click="recipesDropdown = !recipesDropdown">
+            Recipes
+            <Icon v-if="!recipesDropdown" name="chevron-down" class="ml-2 w-4 h-4 inline-block" />
+            <Icon v-else name="chevron-up" class="ml-2 w-4 h-4 inline-block" />
+          </NuxtLink>
+          <ul v-show="recipesDropdown"
+            class="absolute bg-sky-950 text-gray-100 text-base py-2 rounded-md shadow-md mt-2 left-0 hidden md:block">
+            <li class="px-2 hover:bg-green-500">
+              <NuxtLink to="/recipes">All Recipes</NuxtLink>
+            </li>
+            <li class="px-2 hover:bg-green-500">
+              <NuxtLink to="/recipes/categories">Categories</NuxtLink>
+            </li>
+            <li class="px-2 hover:bg-green-500">
+              <NuxtLink to="/recipes/creators">Creators</NuxtLink>
+            </li>
+            <li class="px-2 hover:bg-green-500">
+              <NuxtLink to="/recipes/ingredients">Ingredients</NuxtLink>
+            </li>
+          </ul>
+        </li>
+
+        <NuxtLink to="/about-us">
+          <li class="md:mx-4 md:my-0 my-6">About Us</li>
+        </NuxtLink>
         <NuxtLink to="/sign">
           <button class="hover: bg-green-500 duration: delay-300 font-sans rounded py-1.5 px-4 text-white">Get
             Started</button>
@@ -50,13 +73,13 @@ export default {
 
   setup() {
     let open = ref(false);
+    let recipesDropdown = ref(false);
     let Links = [
       { name: "Home", link: '/' },
-      { name: "Recipes", link: '/recipes' },
-      { name: "Categories", link: '/categories' },
+      // Removed Recipes link as it's now part of the dropdown
     ]
 
-    return { Links, open };
+    return { Links, open, recipesDropdown };
   }
 }
 
