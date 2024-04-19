@@ -32,27 +32,10 @@
           <NuxtLink :to="link.link" class="text-xl hover:text-green-500">{{ link.name }}</NuxtLink>
         </li>
 
-        <li class="md:mx-4 md:my-0 my-6 relative" v-if="!open">
-          <NuxtLink to="/recipes" class="text-xl hover:text-green-500" @click="recipesDropdown = !recipesDropdown">
+        <li class="md:mx-4 md:my-0 my-6 relative">
+          <NuxtLink to="/recipes" class="text-xl hover:text-green-500">
             Recipes
-            <Icon v-if="!recipesDropdown" name="chevron-down" class="ml-2 w-4 h-4 inline-block" />
-            <Icon v-else name="chevron-up" class="ml-2 w-4 h-4 inline-block" />
           </NuxtLink>
-          <ul v-show="recipesDropdown"
-            class="absolute bg-sky-950 text-gray-100 text-base py-2 rounded-md shadow-md mt-2 left-0 hidden md:block">
-            <li class="px-2 hover:bg-green-500">
-              <NuxtLink to="/recipes">All Recipes</NuxtLink>
-            </li>
-            <li class="px-2 hover:bg-green-500">
-              <NuxtLink to="/recipes/categories">Categories</NuxtLink>
-            </li>
-            <li class="px-2 hover:bg-green-500">
-              <NuxtLink to="/recipes/creators">Creators</NuxtLink>
-            </li>
-            <li class="px-2 hover:bg-green-500">
-              <NuxtLink to="/recipes/ingredients">Ingredients</NuxtLink>
-            </li>
-          </ul>
         </li>
 
         <NuxtLink to="/about-us">
@@ -73,13 +56,12 @@ export default {
 
   setup() {
     let open = ref(false);
-    let recipesDropdown = ref(false);
     let Links = [
       { name: "Home", link: '/' },
       // Removed Recipes link as it's now part of the dropdown
     ]
 
-    return { Links, open, recipesDropdown };
+    return { Links, open };
   }
 }
 
