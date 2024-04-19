@@ -1,7 +1,8 @@
 <template>
     <div class="container mx-auto px-2 py-5">
+        <Search />
         <template v-for="category in recipeCategories" :key="category.name">
-            <h2 class="text-xl font-semibold text-gray-100 mb-2 pt-12">{{ category.name }}</h2>
+            <h2 class="text-xl font-semibold text-gray-900 mb-2 pt-12">{{ category.name }}</h2>
 
             <div class="flex flex-wrap -m-2">
                 <div v-for="recipe in category.recipes" :key="recipe" class="p-2 mx-auto aspect-square">
@@ -36,8 +37,13 @@
 </template>
 
 <script>
+
+import Search from '~/components/SearchBar.vue'
+
 export default {
-    components: {},
+    components: {
+        Search,
+    },
     data() {
         return {
             recipeCategories: [
