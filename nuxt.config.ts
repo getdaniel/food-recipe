@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
-    '@nuxtjs/apollo',
     '@vee-validate/nuxt',
   ],
   css: ['~/assets/css/tailwind.css'],
@@ -15,13 +14,6 @@ export default defineNuxtConfig({
     },
   },
 
-  apollo: {
-    clients: {
-      default: {
-        httpEndpoint: 'http://localhost:8080/v1/graphql'
-      },
-    },
-  },
   veeValidate: {
     // disable or enable auto imports
     autoImports: true,
