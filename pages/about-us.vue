@@ -45,8 +45,7 @@
                 </div>
                 <div class="mb-2">
                     <p class="text-gray-800 mb-1"><strong>Location:</strong></p>
-                    <!-- You can embed Google Maps here -->
-                    <!-- For example: -->
+                    <!-- Google Maps Embedded -->
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127772.83722517936!2d38.65102105762962!3d9.020865221426748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x163561add5fbc56b%3A0xaec7c5d3848f799b!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1649904164560!5m2!1sen!2sus"
                         width="100%" height="200" style="border:0;" loading="lazy"></iframe>
@@ -56,20 +55,20 @@
             <!-- Contact Form -->
             <form @submit.prevent="" class="bg-gray-200 p-6 rounded-lg shadow-md lg:w-1/2">
                 <div class="mt-2">
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+                    <label for="name" class="text-gray-800 mb-1"><strong>Name:</strong></label>
                     <input type="text" v-validate="'required'" name="name" id="name" placeholder="Enter your name"
                         class="mt-1 block w-full h-12 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200">
                     <span class="text-red-500"></span>
                 </div>
                 <div class="mt-2">
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                    <label for="email" class="text-gray-800 mb-1"><strong>Email:</strong></label>
                     <input type="email" v-validate="'required|email'" name="email" id="email"
                         placeholder="Enter your email address"
                         class="mt-1 block w-full h-12 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200">
                     <span class="text-red-500"></span>
                 </div>
                 <div class="mt-2">
-                    <label for="message" class="block text-sm font-medium text-gray-700">Message:</label>
+                    <label for="message" class="text-gray-800 mb-1"><strong>Message:</strong></label>
                     <textarea v-validate="'required'" name="message" id="message" rows="5"
                         placeholder="Enter your message here"
                         class="mt-1 block w-full h-36 px-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200"></textarea>
