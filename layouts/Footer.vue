@@ -21,7 +21,7 @@
                 <Icon name="uil:twitter" color="black" size="24" />
             </a>
         </div>
-        {{ currentYear }} &copy; All Rights Reserved.
+        &copy; {{ currentYear }} All Rights Reserved.
     </footer>
 </template>
 
