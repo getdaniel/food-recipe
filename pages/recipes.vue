@@ -5,10 +5,9 @@
             <h2 class="text-xl font-semibold text-gray-900 mb-2 pt-12">{{ category.name }}</h2>
 
             <div class="flex flex-wrap -m-2">
-                <div v-for="recipe in category.recipes" :key="recipe" class="p-2 mx-auto aspect-square">
+                <div v-for="recipe in category.recipes" :key="recipe.name" class="p-2 mx-auto aspect-square">
                     <div class="recipe-card w-72 h-auto bg-gray-200 shadow-md rounded-lg relative">
-                        <img src="../assets/images/logo.png" alt="Recipe Photo"
-                            class="w-full h-48 object-cover rounded-t-lg" />
+                        <img :src="recipe.image" alt="Recipe Photo" class="w-full h-48 object-cover rounded-t-lg" />
 
                         <div class="px-4 py-2 flex flex-col justify-between">
                             <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">{{ recipe.name }}</h2>
@@ -28,6 +27,8 @@
 
                         <div class="absolute bottom-2 right-2">
                             <Icon name="uil:heart" size="21"></Icon>
+                            <span class="mx-1"></span>
+                            <Icon name="uil:bookmark" size="21"></Icon>
                         </div>
                     </div>
                 </div>
@@ -37,8 +38,14 @@
 </template>
 
 <script>
-
-import Search from '~/components/SearchBar.vue'
+import Search from '~/components/SearchBar.vue';
+// Import your images
+import injeraImage from '../assets/images/injera.jpg';
+import wafflesImage from '../assets/images/beyaynet.jpg';
+import oatmealImage from '../assets/images/egg.jpg';
+import saladImage from '../assets/images/meat.jpg';
+import sandwichImage from '../assets/images/mitmita-meat.jpg';
+import soupImage from '../assets/images/logo.png';
 
 export default {
     components: {
@@ -50,17 +57,17 @@ export default {
                 {
                     name: "Breakfast",
                     recipes: [
-                        { name: "Injera", description: "Spongy, slightly sour flatbread, staple food of Ethiopia and Eritrea." },
-                        { name: "Waffles", description: "Light and fluffy breakfast treat, often served with syrup and fruit." },
-                        { name: "Oatmeal", description: "Warm and hearty porridge made with rolled oats." }
+                        { name: "Injera", description: "Spongy, slightly sour flatbread, staple food of Ethiopia and Eritrea.", image: injeraImage },
+                        { name: "Waffles", description: "Light and fluffy breakfast treat, often served with syrup and fruit.", image: wafflesImage },
+                        { name: "Oatmeal", description: "Warm and hearty porridge made with rolled oats.", image: oatmealImage }
                     ]
                 },
                 {
                     name: "Lunch",
                     recipes: [
-                        { name: "Salads", description: "Fresh and healthy combination of greens, vegetables, and protein." },
-                        { name: "Sandwiches", description: "Meal option with various bread, filling, and topping combinations." },
-                        { name: "Soups", description: "Comforting and nourishing liquid meal, perfect for a light lunch." }
+                        { name: "Salads", description: "Fresh and healthy combination of greens, vegetables, and protein.", image: saladImage },
+                        { name: "Sandwiches", description: "Meal option with various bread, filling, and topping combinations.", image: sandwichImage },
+                        { name: "Soups", description: "Comforting and nourishing liquid meal, perfect for a light lunch.", image: soupImage }
                     ]
                 },
                 // ... other categories
