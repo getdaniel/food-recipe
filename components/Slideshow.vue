@@ -1,11 +1,17 @@
 <template>
     <div class="swiper-container p-4">
-        <Swiper class="swiper-wrapper" :modules="[Navigation, Pagination, SwiperAutoplay, SwiperEffectCreative]"
-            :slides-per-view="2" :loop="true" :space-between="10" navigation :pagination="{ clickable: true }"
-            :effect="'creative'" :autoplay="{
+        <Swiper class="swiper-wrapper"
+            :modules="[Navigation, Pagination, SwiperAutoplay, SwiperEffectCreative]"
+            :slides-per-view="2"
+            :loop="true"
+            :space-between="10" navigation
+            :pagination="{ clickable: true }"
+            :effect="'creative'"
+            :autoplay="{
                 delay: 2000,
                 disableOnInteraction: false,
-            }" :creative-effect="{
+            }" 
+            :creative-effect="{
                 prev: {
                     shadow: false,
                     translate: ['-20%', 0, -1],
@@ -48,6 +54,7 @@
 
 <script lang="ts" setup>
 import { Navigation, Pagination } from 'swiper/modules';
+import query from '~/queries/HomePage.gql';
 
 // Define types for your data
 interface Category {
@@ -88,22 +95,6 @@ const slides = [
     { id: 3, image: soupImage },
     // Add more images as needed
 ];
-
-const query = gql`
-    query MyQuery {
-        categories {
-            id
-            name
-        }
-        recipes {
-            category_id
-            title
-        }
-        ingredients {
-            id
-            name
-        }
-    }`;
 
 const { data } = await useAsyncQuery<QueryData>(query);
 const categories = data?.value?.categories ?? [];
