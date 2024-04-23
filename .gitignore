@@ -25,3 +25,5 @@ logs
 
 # docker file
 docker-compose.yaml
+
+assets/images/me.png

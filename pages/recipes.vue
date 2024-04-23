@@ -1,6 +1,13 @@
 <template>
     <div class="container mx-auto px-2 py-5">
         <Search />
+        <div class="flex justify-end px-4">
+            <button class="bg-green-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-xl"
+                @click="createNewRecipe">
+                Create New Recipe
+            </button>
+        </div>
+        
         <template v-for="category in recipeCategories" :key="category.name">
             <h2 class="text-xl font-semibold text-gray-900 mb-2 pt-12">{{ category.name }}</h2>
 
@@ -71,7 +78,7 @@ export default {
                     ]
                 },
                 // ... other categories
-            ]
+            ],
         };
     }
 };
