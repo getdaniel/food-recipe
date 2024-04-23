@@ -1,0 +1,14 @@
+query MyQuery {
+    categories {
+        id
+        name
+    }
+    recipes {
+        category_id
+        title
+    }
+    ingredients {
+        id
+        name
+    }
+}
